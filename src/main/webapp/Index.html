@@ -1,10 +1,338 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egresados UEB</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.unbosque.edu.co/sites/default/files/2020-02/IMG_2391%20%281%29.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 1000px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); 
+            text-align: center;
+            margin-bottom: 20px;
+            margin:auto;
+        }
+
+        .logo img {
+            max-width: 150px;
+            margin-bottom: 20px; 
+        }
+
+        h1 {
+            color: #004080; 
+            margin-bottom: 10px;
+        }
+
+        .search-section {
+            margin-bottom: 20px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .filter-box {
+            width: 150px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .search-button {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            border: none;
+            background-color: #004080;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #003366;
+        }
+
+        .egresados {
+            display: flex;
+            gap: 10px; 
+            justify-content: center; 
+        }
+
+        .egresado {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            width: 200px; 
+            text-align: center;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        .foto img {
+            border-radius: 5px;
+            display: block;
+        }
+
+        .boton-transparente {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            cursor: pointer; 
+            border: none;
+        }
+
+        .profile-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        .profile-details h2 {
+            margin-bottom: 10px;
+        }
+
+        .profile-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .profile-details li {
+            margin-bottom: 10px;
+        }
+
+        .contact-section {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .contact-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-section label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .contact-section input,
+        .contact-section textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .contact-section button {
+            width: 100px;
+            padding: 10px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://th.bing.com/th/id/OIG4.Iao8ThbcTJqmm8RmqFo4?pid=ImgGn" alt="Logo Universidad">
+        </div>
 
+        <h1>EGRESADOS UEB</h1>
+
+        <div class="search-section">
+            <div class="filters">
+                <div class="filter-box">
+                    <label for="experiencia">Experiencia</label>
+                    <select id="experiencia" name="experiencia">
+                        <option value="">Seleccione</option>
+                        <option value="menos1">Menos de 1 año</option>
+                        <option value="1a3">1-3 años</option>
+                        <option value="3a5">3-5 años</option>
+                    </select>
+                </div>
+                <div class="filter-box">
+                    <label for="habilidades">Habilidades</label>
+                    <select id="habilidades" name="habilidades">
+                        <option value="">Seleccione</option>
+                        <option value="Creatividad">Creatividad</option>
+                        <option value="AprendizajeActivo">Aprendizaje Activo</option>
+                        <option value="ComunicacionAcertiva">Comunicación Asertiva</option>
+                        <option value="Liderazgo">Liderazgo</option>
+                    </select>
+                </div>
+                <div class="search-button">
+                    <button>BUSCAR</button>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section class="egresados">
+                <div class="egresado">
+                    <div class="foto">
+                        <img src="https://th.bing.com/th/id/OIG1.X5O8POixWyfWmP9eCYbj?pid=ImgGn" alt="Foto 1" width="200" height="200">
+                        <button class="boton-transparente" onclick="seleccionarEgresado('Jaume Suarez', 'Ingeniero de Sistemas', 'Calle 127 #05-03', 'Bogotá', 'Colombia', 'Ingeniero de Sistemas con experiencia en desarrollo de software y gestión de proyectos. Apasionado por la tecnología y la innovación.', '1 año ', 'Desarrollo de una aplicación móvil para la gestión de inventarios.', 'Creatividad, Liderazgo');"></button>
+                    </div>
+                    <div class="detalles">
+                        <p><strong>Jaume Suarez</strong></p>
+                        <p>Ingeniero De Sistemas</p>
+                        <p>Bogotá, Colombia</p>
+                        <p>22 Años</p>
+                    </div>
+                </div>
+                <div class="egresado">
+                    <div class="foto">
+                        <img src="https://th.bing.com/th/id/OIG1.OICYcwGIx0soE5o_A2Ke?pid=ImgGn" alt="Foto 2" width="200" height="200">
+                        <button class="boton-transparente" onclick="seleccionarEgresado('Angelica Gomez', 'Ingeniera de Sistemas', 'Calle 54 #34-65', 'Bogota', 'Colombia', 'ingeniera de Sistemas especializada en análisis de datos y optimización de procesos. Experta en la implementación de soluciones tecnológicas eficientes.', '2 años', 'Implementación de un sistema de análisis de datos para la toma de decisiones empresariales.', 'Creatividad, Comunicación Asertiva');"></button>
+                    </div>
+                    <div class="detalles">
+                        <p><strong>Angelica Gomez</strong></p>
+                        <p>Ingeniera De Sistemas</p>
+                        <p>Medellín, Colombia</p>
+                        <p>21 Años</p>
+                    </div>
+                </div>
+                <div class="egresado">
+                    <div class="foto">
+                        <img src="https://th.bing.com/th/id/OIG2.HuhBUPwgzktl_i.aJHbn?w=1024&h=1024&rs=1" alt="Foto 3" width="200" height="200">
+                        <button class="boton-transparente" onclick="seleccionarEgresado('Juan Ochoa', 'Ingeniero de Sistemas', 'Calle 230 #  50-02', 'Bogota', 'Colombia', 'Ingeniero de Sistemas con sólida formación en desarrollo de software y administración de redes. Enfocado en la creación de soluciones integrales para la gestión de TI.', '4 años', 'Desarrollo de una plataforma de gestión de redes para empresas.', 'Liderazgo, Aprendizaje Activo');"></button>
+                    </div>
+                    <div class="detalles">
+                        <p><strong>Juan Ochoa</strong></p>
+                        <p>Ingeniero de Sistemas</p>
+                        <p>Cali, Colombia</p>
+                        <p>23 Años</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="profile-details" id="profileDetails">
+                <h2>Detalles del Egresado</h2>
+                <ul>
+                    <li><strong>Nombre:</strong> <span id="nombre"></span></li>
+                    <li><strong>Título:</strong> <span id="titulo"></span></li>
+                    <li><strong>Dirección:</strong> <span id="direccion"></span></li>
+                    <li><strong>Ciudad:</strong> <span id="ciudad"></span></li>
+                    <li><strong>País:</strong> <span id="pais"></span></li>
+                    <li><strong>Perfil:</strong> <span id="perfil"></span></li>
+                    <li><strong>Experiencia:</strong> <span id="experienciaDetalle"></span></li>
+                    <li><strong>Proyectos:</strong> <span id="proyectosDetalle"></span></li>
+                    <li><strong>Habilidades:</strong> <span id="habilidadesDetalle"></span></li>
+                </ul>
+                <button onclick="mostrarFormularioContacto()">Contactar Egresado</button>
+            </section>
+
+            <section class="contact-section" id="contactSection">
+                <h2>Formulario de Contacto</h2>
+                <form>
+                    <label for="nombreEmpresa">Nombre de la Empresa</label>
+                    <input type="text" id="nombreEmpresa" name="nombreEmpresa" required>
+
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" required>
+
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                    <label for="fecha">Fecha Cierre Vacante</label>
+                    <input type="date" id="fecha" name="fecha" required>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function seleccionarEgresado(nombre, titulo, direccion, ciudad, pais, perfil, experiencia, proyectos, habilidades) {
+            document.getElementById('profileDetails').style.display = 'block';
+            document.getElementById('nombre').textContent = nombre;
+            document.getElementById('titulo').textContent = titulo;
+            document.getElementById('direccion').textContent = direccion;
+            document.getElementById('ciudad').textContent = ciudad;
+            document.getElementById('pais').textContent = pais;
+            document.getElementById('perfil').textContent = perfil;
+            document.getElementById('experienciaDetalle').textContent = experiencia;
+            document.getElementById('proyectosDetalle').textContent = proyectos;
+            document.getElementById('habilidadesDetalle').textContent = habilidades;
+        }
+
+        function mostrarFormularioContacto() {
+            document.getElementById('contactSection').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
